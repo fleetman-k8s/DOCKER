@@ -1,0 +1,36 @@
+---
+version: '3'
+services:
+  
+   devserver:
+    image: jenkins
+    ports:
+     - 5050:8080
+    deploy:
+     placement:
+      constraints:
+       - node.hostname == Docker-host 
+
+
+   qaserver:
+     image: tomcat
+     ports:
+      - 6060:8080
+     deploy:
+      replicas: 2
+      placement:
+       constraints:
+        - node.hostname == worker-node1
+
+   prodserver:
+     image: tomcat
+     ports:
+      - 7070:8080
+     deploy:
+      replicas: 3
+      placement:
+       constraints:
+        - node.hostname == worker-node2
+
+
+

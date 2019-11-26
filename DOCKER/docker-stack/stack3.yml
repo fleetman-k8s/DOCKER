@@ -1,0 +1,34 @@
+---
+version: '3'
+services:
+ mydb:
+  image: mysql:5
+  environment:
+    MY_SQL_ROOT_PASSWORD: intelliq
+  deploy:
+   replicas: 2
+   resources:
+     limits:
+       cpu: "0.01"
+       memory: 100M
+
+ apache:
+  image: httpd
+  ports:
+   - 9999:80
+  deploy:
+   replicas: 2
+   resources:
+    limits:
+     cpu: "0.02"
+     memory: 150M
+
+ php:
+  image: php:7.2-apache
+  deploy:
+   resources:
+     limits:
+      cpu: "0.01"
+      memory: 200m
+
+...

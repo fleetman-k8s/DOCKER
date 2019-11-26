@@ -1,0 +1,16 @@
+FROM ubuntu 
+MAINTAINER intelliq
+USER root
+
+RUN apt-get update -y 
+RUN apt-get install git -y
+RUN apt-get install -y openjdk-8-jdk
+RUN apt-get install -y maven 
+RUN  apt-get install tree -y
+
+ADD http://mirrors.jenkins.io/war-stable/latest/jenkins.war /
+
+##EXPOSE 8080 
+
+##ENTRYPOINT ["java","-jar","jenkins.jar"]
+

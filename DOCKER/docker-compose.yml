@@ -1,0 +1,14 @@
+---
+version: '3'
+services:
+  mydb:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: intelliq
+  mywordpress:
+    image: wordpress
+    ports:
+     - 4040:80
+    links:
+     - mydb:mysql
+...
